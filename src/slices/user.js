@@ -10,7 +10,6 @@ export const loginUser = createAsyncThunk(
                 const getToken = response.data.body.token
                 sessionStorage.setItem("token", getToken)
                 window.location.assign("http://localhost:3000/user")
-                console.log(getToken)
             } 
         } catch (err) {
             if (err.response.status === 400) {

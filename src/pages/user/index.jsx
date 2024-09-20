@@ -8,6 +8,9 @@ import { useDispatch, useSelector } from "react-redux"
 import { login, setIsOpen, profile } from "../../slices/user"
 import { editUsername } from "../../slices/editUsername"
 
+
+// présenter très brièvement le code puis passer du temps sur le thunk + gestion des states
+
 export default function User() {
     const dispatch = useDispatch()
     const { register, handleSubmit } = useForm()    

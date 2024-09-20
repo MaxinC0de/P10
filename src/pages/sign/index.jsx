@@ -7,7 +7,7 @@ import { loginUser } from "../../slices/user"
 
 export default function SignPage() {
     const dispatch = useDispatch()
-    const { register, handleSubmit, watch } = useForm()
+    const { register, handleSubmit } = useForm()
 
     const logIn = async (data) => {
         const result = await dispatch(loginUser({

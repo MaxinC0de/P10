@@ -14,11 +14,10 @@ export default function Header() {
     })
 
     const signOut = async () => {
-        setTimeout(() => {
-            sessionStorage.removeItem("token")
-            dispatch(logout())
-            window.location.assign("http://localhost:3000/sign-in")
-        }, 100)
+        sessionStorage.removeItem("token")
+        dispatch(logout())
+        window.location.assign("http://localhost:3000/sign-in")
+        window.location.reload()
     }
 
     const userName = useSelector((state) => state.editUsername.username)
