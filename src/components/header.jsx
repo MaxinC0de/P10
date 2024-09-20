@@ -14,12 +14,15 @@ export default function Header() {
     })
 
     const signOut = async () => {
-        sessionStorage.removeItem("token")
-        dispatch(logout())
-        window.location.assign("http://localhost:3000/sign-in")
+        setTimeout(() => {
+            sessionStorage.removeItem("token")
+            dispatch(logout())
+            window.location.assign("http://localhost:3000/sign-in")
+        }, 100)
     }
 
-    const username = useSelector((state) => state.editUsername.username)
+    const userName = useSelector((state) => state.editUsername.username)
+    const username = useSelector((state) => state.user.username)
 
     return(
         <>
@@ -33,7 +36,7 @@ export default function Header() {
                         {location.pathname === "/user" ? 
                             <>
                                 <img src={user} alt="" className="user-img"/>
-                                <p>{username}</p>
+                                <p>{userName === null ? username : userName}</p>
                                 <img src={out} alt="" className="user-img" />
                                 <p onClick={signOut}>Sign Out</p>
                             </> :

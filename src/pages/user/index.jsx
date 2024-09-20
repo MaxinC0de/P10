@@ -14,11 +14,13 @@ export default function User() {
     const firstName = useSelector((state) => state.user?.firstName)
     const lastName = useSelector((state) => state.user?.lastName)
     const userName = useSelector((state) => state.editUsername.username)
+
+    const username = useSelector((state) => state.user.username)
         
     const isOpen = useSelector((state) => state.user?.isOpen)
     const isLoggedIn = useSelector((state) => state.user?.isLoggedIn)
     const data = jsonData.inputs
-    const placeholders = [userName || "", firstName || "", lastName || ""]
+    const placeholders = [userName === null ? username : userName, firstName || "", lastName || ""]
     
     const onSubmit = (Data) => {
         dispatch(editUsername(Data.username))
@@ -41,7 +43,7 @@ export default function User() {
             <Header />
                 <main className="main bg-dark">
                     <div className="header">
-                        <h1>Welcome back <br/>{userName}</h1>
+                        <h1>Welcome back <br/>{userName === null ? username : userName}</h1>
                         <button className="edit-button" onClick={toggleEditUsername}>Edit Name</button>
                         {isOpen && 
                             <form className="m-wrap" onSubmit={handleSubmit(onSubmit)}>

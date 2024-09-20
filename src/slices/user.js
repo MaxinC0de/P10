@@ -10,6 +10,7 @@ export const loginUser = createAsyncThunk(
                 const getToken = response.data.body.token
                 sessionStorage.setItem("token", getToken)
                 window.location.assign("http://localhost:3000/user")
+                console.log(getToken)
             } 
         } catch (err) {
             if (err.response.status === 400) {
@@ -46,21 +47,21 @@ const userSlice = createSlice({
         firstName: null,
         lastName: null,
         isLoggedIn: false,
-        isOpen: false
+        isOpen: false,
     },
     reducers: {
         login: (state) => {
             state.isLoggedIn = true
         },
         logout: (state) => {
-            state.isLoggedIn = false;
-            state.username = null;
-            state.firstName = null;
+            state.isLoggedIn = false
+            state.username = null
+            state.firstName = null
             state.lastName = null
         },
         setIsOpen: (state, action) => {
-            state.isOpen = action.payload;
-        }
+            state.isOpen = action.payload
+        },
     },
     extraReducers(builder) {
         builder 

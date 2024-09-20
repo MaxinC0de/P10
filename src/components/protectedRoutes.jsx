@@ -1,10 +1,11 @@
 import { Navigate, Outlet } from "react-router-dom"
 
-const ProtectedRoutes = () => {
-    console.log("ok")
+const ProtectedRoutes = ({children}) => {
     const token = sessionStorage.getItem("token")
-    console.log(token)
-    return token ? <Outlet /> : <Navigate to="/user" />
+    if (!token) {
+        return <Navigate to="/sign-in" replace />
+    }
+    return children ? children : <Outlet />
 }
 
 export default ProtectedRoutes
